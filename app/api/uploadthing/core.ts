@@ -4,14 +4,14 @@ const f = createUploadthing();
 
 export const ourFileRouter = {
   // 1. Single Main Image
-  mainImageUploader: f({ image: { maxFileSize: "4MB", maxFileCount: 1 } })
+  mainImageUploader: f({ image: { maxFileSize: "16MB", maxFileCount: 1 } })
     .middleware(async () => ({ userId: "admin" }))
     .onUploadComplete(async ({ file }) => {
       return { url: file.url, key: file.key };
     }),
 
   // 2. Multiple Gallery Images
-  galleryImagesUploader: f({ image: { maxFileSize: "4MB", maxFileCount: 6 } })
+  galleryImagesUploader: f({ image: { maxFileSize: "16MB", maxFileCount: 6 } })
     .middleware(async () => ({ userId: "admin" }))
     .onUploadComplete(async ({ file }) => {
       return { url: file.url, key: file.key };
