@@ -2,6 +2,7 @@
 
 import { prisma } from "@/lib/prisma";
 import { CollView, ServerActionResponse } from "@/types";
+import { Prisma } from "@prisma/client";
 
 export async function getCategorysWithProject(
   slug?: string | null
@@ -67,3 +68,60 @@ export async function getCategorysWithProject(
     };
   }
 }
+
+export type ProjectWithRelations = Prisma.ProjectGetPayload<{
+    include: {
+      mainImage: true;
+      images: true;
+      video: true;
+      categories: true;
+    };
+  }>;
+  
+  export async function getProjectWithRelations(
+    slug: string
+  ): Promise<ServerActionResponse<ProjectWithRelations>> {
+    try {
+      if (!slug) {
+        return {
+          success: false,
+          error: "Project slug is required.",
+        };
+      }
+  
+      const project = await prisma.project.findUnique({
+        where: { slug },
+        include: {
+          mainImage: true,
+          images: true,
+          video: true,
+          categories: true,
+        },
+      });
+  
+      if (!project) {
+        return {
+          success: false,
+          error: "Project not found.",
+        };
+      }
+
+      return {
+        success: true,
+        data: project,
+      };
+    } catch (error) {
+      console.error("Error fetching project with relations:", error);
+  
+      return {
+        success: false,
+        error:
+          error instanceof Error
+            ? error.message
+            : "An error occurred while fetching the project.",
+      };
+    }
+  }
+
+
+

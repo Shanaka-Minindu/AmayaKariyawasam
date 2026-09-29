@@ -5,6 +5,8 @@ import { extractRouterConfig } from "uploadthing/server";
 import { Inter } from "next/font/google";
 import { ourFileRouter } from "./api/uploadthing/core";
 
+
+
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
 export default function RootLayout({
@@ -20,6 +22,7 @@ export default function RootLayout({
       <body>
         <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
         {children}
+       
       </body>
     </html>
   );
