@@ -44,3 +44,9 @@ export interface CollView{
     slug:string;
     projects: ColProject[]
 }
+
+export interface fullView{
+    title: string;
+    id: string;
+    slug: string;
+}

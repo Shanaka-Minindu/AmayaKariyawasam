@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { X, Loader2 } from "lucide-react";
 import { useProjectModalStore } from "@/store/useProjectModalStore";
+import { fullView } from "@/types";
 
 const FullProjectView = () => {
   const {
@@ -100,7 +101,7 @@ const FullProjectView = () => {
               {/* Category Badges */}
               {activeProject.categories && activeProject.categories.length > 0 && (
                 <div className="mt-2 flex flex-wrap gap-1.5">
-                  {activeProject.categories.map((cat) => (
+                  {activeProject.categories.map((cat:fullView) => (
                     <span
                       key={cat.id}
                       className="rounded-full bg-neutral-200/60 px-2.5 py-0.5 text-xs font-medium text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400"
