@@ -85,7 +85,7 @@ export async function getCategories(): Promise<ServerActionResponse<GetCategorie
         slug: true,
       },
       orderBy: {
-        title: "asc", // Keeps the categories alphabetically ordered
+        title: "desc", // Keeps the categories alphabetically ordered
       },
     });
 

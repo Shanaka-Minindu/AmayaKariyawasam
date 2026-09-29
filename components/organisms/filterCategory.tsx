@@ -78,12 +78,12 @@ const FilterCategory: React.FC<FilterCategoryProps> = ({
       {/* Page Title */}
       <div className="text-center">
         <h1 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 sm:text-4xl">
-          Categories
+        Expertise
         </h1>
       </div>
 
       {/* Filter Buttons Navigation */}
-      <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+      <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:pb-4">
         <span className="mr-2 text-sm font-medium text-neutral-500 dark:text-neutral-400">
           Filter :
         </span>
@@ -93,7 +93,7 @@ const FilterCategory: React.FC<FilterCategoryProps> = ({
           variant={selectedSlug === "ALL" ? "default" : "outline"}
           onClick={() => handleFilterChange("ALL")}
           disabled={isPending}
-          className="rounded-xl px-5 py-2 transition-all"
+          className="rounded-xl px-6 py-4 transition-all"
         >
           All
         </Button>
@@ -105,7 +105,7 @@ const FilterCategory: React.FC<FilterCategoryProps> = ({
             variant={selectedSlug === cat.slug ? "default" : "outline"}
             onClick={() => handleFilterChange(cat.slug)}
             disabled={isPending}
-            className="rounded-xl px-5 py-2 transition-all"
+            className="rounded-xl px-6 py-4 transition-all"
           >
             {cat.title}
           </Button>

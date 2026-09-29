@@ -17,7 +17,7 @@ const Category: React.FC<CategoryProps> = ({ category }) => {
     <Card className="w-full rounded-3xl border border-neutral-200/80 bg-neutral-50/50 shadow-none dark:border-neutral-800 dark:bg-neutral-900/30">
       <CardHeader className="p-6 pb-2 md:p-8 md:pb-4">
         {/* Category Title matching sample design */}
-        <CardTitle className="text-xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 md:text-2xl">
+        <CardTitle className="text-2xl font-bold tracking-tight text-center text-amber-950 dark:text-neutral-100 md:text-3xl">
           {title}
         </CardTitle>
       </CardHeader>

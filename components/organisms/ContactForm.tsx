@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm as useHookForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -20,10 +20,9 @@ const contactSchema = z.object({
 type ContactFormData = z.infer<typeof contactSchema>;
 
 export default function ContactForm() {
-  // Formspree Hook
-  const [formspreeState, sendToFormspree] = useFormspree(
-    process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID || ""
-  );
+  // Provide a fallback placeholder ID so prerendering during build doesn't throw
+  const formKey = process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID || "formspree_fallback";
+  const [formspreeState, sendToFormspree] = useFormspree(formKey);
 
   // React Hook Form
   const {
@@ -35,14 +34,15 @@ export default function ContactForm() {
     resolver: zodResolver(contactSchema),
   });
 
-  const onSubmit = async (data: ContactFormData) => {
-    // Send form data to Formspree
-    await sendToFormspree(data);
-    
-    // If successful, reset form fields
+  // Reset form inputs upon successful submission
+  useEffect(() => {
     if (formspreeState.succeeded) {
       reset();
     }
+  }, [formspreeState.succeeded, reset]);
+
+  const onSubmit = async (data: ContactFormData) => {
+    await sendToFormspree(data);
   };
 
   return (
