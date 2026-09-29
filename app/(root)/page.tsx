@@ -19,13 +19,14 @@ const page = () => {
     <Navbar/>
 
     <Header/>
-    <section id="expertise" className="min-h-screen ">
-    <FilterCategory/>
-    </section>
     <section id="about-me" className="min-h-screen ">
       <About/>
 
       </section>
+    <section id="expertise" className="min-h-screen ">
+    <FilterCategory/>
+    </section>
+    
 <section id="contact" className="min-h-screen ">
       <ContactForm/>
       </section>

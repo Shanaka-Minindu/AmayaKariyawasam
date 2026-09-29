@@ -9,8 +9,9 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
+    { label: "About Me", href: "#about-me" },
   { label: "Expertise", href: "#expertise" },
-  { label: "About Me", href: "#about-me" },
+  
   { label: "Contact", href: "#contact" },
 ];
 
