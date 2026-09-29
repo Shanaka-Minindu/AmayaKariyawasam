@@ -73,6 +73,7 @@ const FilterCategory: React.FC<FilterCategoryProps> = ({
   };
 
   return (
+    <section id="about" className="relative w-full overflow-hidden bg-amber-100/60 px-6 py-20 sm:px-10 md:px-16 md:py-28">
     <div className="w-full space-y-8">
       {/* Page Title */}
       <div className="text-center">
@@ -134,6 +135,7 @@ const FilterCategory: React.FC<FilterCategoryProps> = ({
         </div>
       )}
     </div>
+    </section>
   );
 };
 

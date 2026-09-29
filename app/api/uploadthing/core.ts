@@ -11,7 +11,7 @@ export const ourFileRouter = {
     }),
 
   // 2. Multiple Gallery Images
-  galleryImagesUploader: f({ image: { maxFileSize: "16MB", maxFileCount: 6 } })
+  galleryImagesUploader: f({ image: { maxFileSize: "16MB", maxFileCount: 15 } })
     .middleware(async () => ({ userId: "admin" }))
     .onUploadComplete(async ({ file }) => {
       return { url: file.url, key: file.key };
